@@ -1,9 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.Selenide;
 
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -35,12 +35,12 @@ public class PracticeFormTests {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         //Configuration.holdBrowserOpen = true; // only for local test purposes
-        //Configuration.timeout = 5000; // was changed for test purposes, default value is 4000
+        //Configuration.timeout = 5000; // changed for test purposes, default value is 4000
     }
 
-    @AfterAll
-    public static void afterAll() {
-        WebDriverRunner.getWebDriver().close();
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
     }
 
     @Test
@@ -89,7 +89,6 @@ public class PracticeFormTests {
         $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(gender));
         $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(mobile));
         $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(day + " " + month + "," + year));
-        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(subject));
         $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(subject));
         $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(checkBoxNameSport + ", " + checkBoxNameReading + ", " + checkBoxNameMusic));
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text(picture));
