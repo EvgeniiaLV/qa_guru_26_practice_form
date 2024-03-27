@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 
 public class PracticeFormTests extends TestBase {
-    private final String userName = "Evgeniia",
+    PracticeFormPage practiceFormPage = new PracticeFormPage();
+    private String userName = "Evgeniia",
             lastName = "Liasheva",
             email = "evlv@mail.ru",
             gender = "Female",
@@ -20,8 +21,6 @@ public class PracticeFormTests extends TestBase {
             address = "Some address, 1/5",
             state = "Haryana",
             city = "Karnal";
-
-    PracticeFormPage practiceFormPage = new PracticeFormPage();
 
     @Test
     void successfulRegistrationTestFilledAllFields() {
@@ -84,11 +83,7 @@ public class PracticeFormTests extends TestBase {
                 setDateOfBirth(year, month, day).
                 clickSubmit();
 
-        practiceFormPage.checkResult("Student Name", userName + " " + lastName).
-                checkResult("Student Email", email).
-                checkResult("Gender", gender).
-                checkResult("Date of Birth", day + " " + month + "," + year);
-
+        practiceFormPage.checkEmptyMobileNumber();
     }
 
 }

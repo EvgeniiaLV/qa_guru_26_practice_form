@@ -2,8 +2,9 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ResultPracticeFormComponent;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -20,11 +21,12 @@ public class PracticeFormPage {
             addressInput = $("#currentAddress"),
             stateInput = $("div#state input"),
             cityInput = $("div#city input"),
-            tableRowToCheck = $(".table-responsive"),
-            submitButton = $("#submit");
+            submitButton = $("#submit"),
+            modalWindowSubmit = $(".modal-content");
 
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    ResultPracticeFormComponent resultPracticeFormComponent = new ResultPracticeFormComponent();
 
     public PracticeFormPage openPage() {
         open("/automation-practice-form");
@@ -115,8 +117,15 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage checkResult(String key, String value) {
-        tableRowToCheck.$(byText(key)).parent()
-                .shouldHave(text(value));
+        resultPracticeFormComponent.checkPracticeFormResult(key, value);
+
+        return this;
+    }
+
+    public PracticeFormPage checkEmptyMobileNumber() {
+        modalWindowSubmit.shouldNot(exist);
+        mobileNumberInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        mobileNumberInput.shouldBe(empty);
 
         return this;
     }

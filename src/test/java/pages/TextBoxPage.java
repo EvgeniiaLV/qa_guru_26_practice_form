@@ -55,7 +55,7 @@ public class TextBoxPage {
     }
 
     public TextBoxPage checkResult(String key, String value) {
-        resultTextBoxComponent.checkRegistrationResult(key, value);
+        resultTextBoxComponent.checkTextBoxResult(key, value);
 
         return this;
     }
