@@ -5,7 +5,7 @@ import pages.PracticeFormPage;
 
 public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
-    private String userName = "Evgeniia",
+    String userName = "Evgeniia",
             lastName = "Liasheva",
             email = "evlv@mail.ru",
             gender = "Female",

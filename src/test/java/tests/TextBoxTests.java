@@ -5,7 +5,7 @@ import pages.TextBoxPage;
 
 public class TextBoxTests extends TestBase {
     TextBoxPage textBoxPage = new TextBoxPage();
-    private String userName = "Evgeniia",
+    String userName = "Evgeniia",
             email = "evlv@mail.ru",
             currentAddress = "SPb, Nevskyi street 123/4/5",
             permanentAddress = "Somewhere in Puerto Vallarta";
