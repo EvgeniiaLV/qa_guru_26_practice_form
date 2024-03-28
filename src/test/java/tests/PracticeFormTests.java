@@ -34,10 +34,6 @@ public class PracticeFormTests extends TestBase {
             city = RandomUtils.getRandomCity(state);
 
     ArrayList<String> hobbies = RandomUtils.getRandomHobbies();
-    String checkBoxNameSport = "Sports",
-            checkBoxNameReading = "Reading",
-            checkBoxNameMusic = "Music";
-
 
     @Test
     void successfulRegistrationTestFilledAllFields() {
