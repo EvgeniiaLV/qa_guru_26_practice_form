@@ -22,8 +22,7 @@ public class PracticeFormTests extends TestBase {
     String userName = faker.name().firstName(),
             lastName = faker.name().lastName(),
             email = faker.internet().emailAddress(),
-
-    mobile = faker.phoneNumber().subscriberNumber(10),
+            mobile = faker.phoneNumber().subscriberNumber(10),
             day = sdfDay.format(birthday), // format: 2 digits, example - "01"
             month = sdfMonth.format(birthday),
             year = sdfYear.format(birthday),
