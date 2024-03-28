@@ -1,26 +1,44 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
+import utils.RandomUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
-    String userName = "Evgeniia",
-            lastName = "Liasheva",
-            email = "evlv@mail.ru",
-            gender = "Female",
-            mobile = "9110002233",
-            year = "2020",
-            month = "November",
-            day = "18", // format: 2 digits, example - "01"
-            subject = "English",
-            checkBoxNameSport = "Sports",
+
+    Faker faker = new Faker(new Locale("en-GB"));
+
+    SimpleDateFormat sdfYear = new SimpleDateFormat("YYYY");
+    SimpleDateFormat sdfMonth = new SimpleDateFormat("MMMM");
+    SimpleDateFormat sdfDay = new SimpleDateFormat("dd");
+    Date birthday = faker.date().birthday();
+    String userName = faker.name().firstName(),
+            lastName = faker.name().lastName(),
+            email = faker.internet().emailAddress(),
+
+    mobile = faker.phoneNumber().subscriberNumber(10),
+            day = sdfDay.format(birthday), // format: 2 digits, example - "01"
+            month = sdfMonth.format(birthday),
+            year = sdfYear.format(birthday),
+            gender = RandomUtils.getRandomGender(),
+            subject = RandomUtils.getRandomSubject(),
+            picture = RandomUtils.getRandomPicture(),
+            address = faker.address().streetAddress(),
+            state = RandomUtils.getRandomState(),
+            city = RandomUtils.getRandomCity(state);
+
+    ArrayList<String> hobbies = RandomUtils.getRandomHobbies();
+    String checkBoxNameSport = "Sports",
             checkBoxNameReading = "Reading",
-            checkBoxNameMusic = "Music",
-            picture = "ireland.jpg",
-            address = "Some address, 1/5",
-            state = "Haryana",
-            city = "Karnal";
+            checkBoxNameMusic = "Music";
+
 
     @Test
     void successfulRegistrationTestFilledAllFields() {
@@ -32,11 +50,11 @@ public class PracticeFormTests extends TestBase {
                 setGender(gender).
                 setMobileNumber(mobile).
                 setDateOfBirth(year, month, day).
-                setSubject(subject).
-                setHobby(checkBoxNameSport).
-                setHobby(checkBoxNameReading).
-                setHobby(checkBoxNameMusic).
-                uploadPicture(picture).
+                setSubject(subject);
+        for (int i = 0; i < hobbies.size(); i++) {
+            practiceFormPage.setHobby(hobbies.get(i));
+        }
+        practiceFormPage.uploadPicture(picture).
                 setAddress(address).
                 setState(state).
                 setCity(city).
@@ -47,9 +65,17 @@ public class PracticeFormTests extends TestBase {
                 checkResult("Gender", gender).
                 checkResult("Mobile", mobile).
                 checkResult("Date of Birth", day + " " + month + "," + year).
-                checkResult("Subjects", subject).
-                checkResult("Hobbies", checkBoxNameSport + ", " + checkBoxNameReading + ", " + checkBoxNameMusic).
-                checkResult("Picture", picture).
+                checkResult("Subjects", subject);
+
+        if (hobbies.size() > 0) {
+            String checkHobbies = "";
+            for (int i = 0; i < hobbies.size(); i++) {
+                checkHobbies = checkHobbies + hobbies.get(i) + ", ";
+            }
+            practiceFormPage.checkResult("Hobbies", checkHobbies.substring(0, checkHobbies.length() - 2));
+        }
+
+        practiceFormPage.checkResult("Picture", picture).
                 checkResult("Address", address).
                 checkResult("State and City", state + " " + city);
 
