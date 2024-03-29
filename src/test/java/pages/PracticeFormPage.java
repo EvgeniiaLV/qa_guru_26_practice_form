@@ -4,6 +4,8 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.ResultPracticeFormComponent;
 
+import java.util.ArrayList;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -86,6 +88,14 @@ public class PracticeFormPage {
         return this;
     }
 
+    public PracticeFormPage setHobbies(ArrayList<String> hobbies) {
+        for (int i = 0; i < hobbies.size(); i++) {
+            setHobby(hobbies.get(i));
+        }
+
+        return this;
+    }
+
     public PracticeFormPage uploadPicture(String value) {
         pictureUpload.uploadFromClasspath(value);
 
@@ -129,5 +139,4 @@ public class PracticeFormPage {
 
         return this;
     }
-
 }
