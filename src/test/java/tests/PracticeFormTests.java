@@ -1,47 +1,31 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
-import utils.RandomUtils;
+import utils.TestData;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Locale;
 
 public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
-    Faker faker = new Faker(new Locale("en-GB"));
+    Date birthday = TestData.getRandomBirthday();
+    String day = TestData.getRandomDay(birthday),
+            month = TestData.getRandomMonth(birthday),
+            year = TestData.getRandomYear(birthday),
+            userName = TestData.getRandomName(),
+            lastName = TestData.getRandomLastName(),
+            email = TestData.getRandomEmail(),
+            mobile = TestData.getRandomMobile(),
+            gender = TestData.getRandomGender(),
+            subject = TestData.getRandomSubject(),
+            picture = TestData.getRandomPicture(),
+            address = TestData.getRandomAddress(),
+            state = TestData.getRandomState(),
+            city = TestData.getRandomCity(state);
 
-    SimpleDateFormat sdfYear = new SimpleDateFormat("YYYY");
-    SimpleDateFormat sdfMonth = new SimpleDateFormat("MMMM");
-    SimpleDateFormat sdfDay = new SimpleDateFormat("dd");
-    Date birthday = faker.date().birthday();
-    String day = sdfDay.format(birthday), // format: 2 digits, example - "01"
-            month = sdfMonth.format(birthday),
-            year = sdfYear.format(birthday);
-    String userName = faker.name().firstName(),
-            lastName = faker.name().lastName(),
-            email = faker.internet().emailAddress(),
-            mobile = faker.phoneNumber().subscriberNumber(10),
-            gender = faker.options().option("Male", "Female", "Other"),
-            subject = faker.options().option("English", "Maths", "Physics", "Computer Science", "Chemistry", "Commerce", "Accounting", "Civics", "Biology"),
-            picture = faker.options().option("ireland.jpg", "maldives.jpg", "panda.jpg", "toscana.jpg"),
-            address = faker.address().streetAddress(),
-            state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
-            city = RandomUtils.getRandomCity(state);
-
-    ArrayList<String> hobbies = faker.options().option(new ArrayList<>(),
-            new ArrayList<>(Arrays.asList("Sports", "Reading", "Music")),
-            new ArrayList<>(Arrays.asList("Reading", "Music")),
-            new ArrayList<>(Arrays.asList("Sports", "Music")),
-            new ArrayList<>(Arrays.asList("Sports", "Reading")),
-            new ArrayList<>(Arrays.asList("Music")),
-            new ArrayList<>(Arrays.asList("Reading")),
-            new ArrayList<>(Arrays.asList("Sports")));
-    String checkHobbies = RandomUtils.prepareHobbiesForCheck(hobbies);
+    ArrayList<String> hobbies = TestData.getRandomHobbies();
+    String checkHobbies = TestData.prepareHobbiesForCheck(hobbies);
 
 
     @Test
