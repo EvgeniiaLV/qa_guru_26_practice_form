@@ -9,70 +9,80 @@ import java.util.Date;
 import java.util.Locale;
 
 public class TestData {
+    private static TestData INSTANCE;
+    private final Faker faker = new Faker(new Locale("en-GB"));
+    private TestData() {
+    }
 
-    private static final Faker faker = new Faker(new Locale("en-GB"));
+    public static TestData getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new TestData();
+        }
 
-    public static String getRandomName() {
+        return INSTANCE;
+    }
+
+    public String getRandomName() {
 
         return faker.name().firstName();
 
     }
 
-    public static String getRandomLastName() {
+    public String getRandomLastName() {
 
         return faker.name().lastName();
 
     }
 
-    public static String getRandomEmail() {
+    public String getRandomEmail() {
 
         return faker.internet().emailAddress();
 
     }
 
-    public static String getRandomMobile() {
+    public String getRandomMobile() {
 
         return faker.phoneNumber().subscriberNumber(10);
 
     }
 
-    public static String getRandomGender() {
+    public String getRandomGender() {
 
         return faker.options().option("Male", "Female", "Other");
 
     }
 
-    public static String getRandomSubject() {
+    public String getRandomSubject() {
 
         return faker.options().option("English", "Maths", "Physics", "Computer Science", "Chemistry", "Commerce", "Accounting", "Civics", "Biology");
 
     }
 
-    public static String getRandomAddress() {
+    public String getRandomAddress() {
 
         return faker.address().streetAddress();
 
     }
 
-    public static String getRandomPicture() {
+    public String getRandomPicture() {
 
         return faker.options().option("ireland.jpg", "maldives.jpg", "panda.jpg", "toscana.jpg");
 
     }
 
-    public static String getRandomState() {
+    public String getRandomState() {
 
         return faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
 
     }
 
-    public static Date getRandomBirthday() {
+    public Date getRandomBirthday() {
 
         return faker.date().birthday();
 
     }
 
-    public static String getRandomDay(Date birthday) {
+    public String getRandomDay(Date birthday) {
 
         SimpleDateFormat sdfDay = new SimpleDateFormat("dd", Locale.ENGLISH);
 
@@ -80,7 +90,7 @@ public class TestData {
 
     }
 
-    public static String getRandomMonth(Date birthday) {
+    public String getRandomMonth(Date birthday) {
 
         SimpleDateFormat sdfMonth = new SimpleDateFormat("MMMM", Locale.ENGLISH);
 
@@ -88,7 +98,7 @@ public class TestData {
 
     }
 
-    public static String getRandomYear(Date birthday) {
+    public String getRandomYear(Date birthday) {
 
         SimpleDateFormat sdfYear = new SimpleDateFormat("YYYY", Locale.ENGLISH);
 
@@ -96,7 +106,7 @@ public class TestData {
 
     }
 
-    public static ArrayList<String> getRandomHobbies() {
+    public ArrayList<String> getRandomHobbies() {
 
         return faker.options().option(new ArrayList<>(),
                 new ArrayList<>(Arrays.asList("Sports", "Reading", "Music")),
@@ -109,7 +119,7 @@ public class TestData {
 
     }
 
-    public static String prepareHobbiesForCheck(ArrayList<String> hobbies) {
+    public String prepareHobbiesForCheck(ArrayList<String> hobbies) {
         String checkHobbies = "";
         for (int i = 0; i < hobbies.size(); i++) {
             checkHobbies = checkHobbies + hobbies.get(i) + ", ";
@@ -122,7 +132,7 @@ public class TestData {
         return checkHobbies;
     }
 
-    public static String getRandomCity(String state) {
+    public String getRandomCity(String state) {
         String city;
         switch (state) {
             case "NCR":

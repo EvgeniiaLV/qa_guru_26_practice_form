@@ -2,30 +2,29 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
-import utils.TestData;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
-    Date birthday = TestData.getRandomBirthday();
-    String day = TestData.getRandomDay(birthday),
-            month = TestData.getRandomMonth(birthday),
-            year = TestData.getRandomYear(birthday),
-            userName = TestData.getRandomName(),
-            lastName = TestData.getRandomLastName(),
-            email = TestData.getRandomEmail(),
-            mobile = TestData.getRandomMobile(),
-            gender = TestData.getRandomGender(),
-            subject = TestData.getRandomSubject(),
-            picture = TestData.getRandomPicture(),
-            address = TestData.getRandomAddress(),
-            state = TestData.getRandomState(),
-            city = TestData.getRandomCity(state);
+    Date birthday = testData.getRandomBirthday();
+    String day = testData.getRandomDay(birthday),
+            month = testData.getRandomMonth(birthday),
+            year = testData.getRandomYear(birthday),
+            userName = testData.getRandomName(),
+            lastName = testData.getRandomLastName(),
+            email = testData.getRandomEmail(),
+            mobile = testData.getRandomMobile(),
+            gender = testData.getRandomGender(),
+            subject = testData.getRandomSubject(),
+            picture = testData.getRandomPicture(),
+            address = testData.getRandomAddress(),
+            state = testData.getRandomState(),
+            city = testData.getRandomCity(state);
 
-    ArrayList<String> hobbies = TestData.getRandomHobbies();
-    String checkHobbies = TestData.prepareHobbiesForCheck(hobbies);
+    ArrayList<String> hobbies = testData.getRandomHobbies();
+    String checkHobbies = testData.prepareHobbiesForCheck(hobbies);
 
 
     @Test
