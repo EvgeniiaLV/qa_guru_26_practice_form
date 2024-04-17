@@ -38,6 +38,7 @@ public class PracticeFormTests extends TestBase {
 
 
     @Test
+    @Tag("practiceForm")
     @Owner("Evgeniia Liasheva")
     @DisplayName("Positive check: all fields are filled with correct data")
     void successfulRegistrationTestFilledAllFields() {
@@ -59,7 +60,7 @@ public class PracticeFormTests extends TestBase {
                 uploadPicture(picture).
                 setAddress(address).
                 setState(state).
-                setCity(city); ;});
+                setCity(city);});
 
         step("submit", () -> {
             practiceFormPage.clickSubmit();});
@@ -110,14 +111,24 @@ public class PracticeFormTests extends TestBase {
     @DisplayName("Negative check with empty mobile number")
     void negativeRegistrationTestMissingMobileNumber() {
 
-        practiceFormPage.openPage().
-                setFirstName(userName).
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        step("Open the form", () -> {
+            practiceFormPage.openPage();});
+
+        step("Fill in the form", () -> {
+            practiceFormPage.setFirstName(userName).
                 setLastName(lastName).
                 setGender(gender).
-                setDateOfBirth(year, month, day).
-                clickSubmit();
+                setDateOfBirth(year, month, day);});
 
-        practiceFormPage.checkEmptyMobileNumber();
+        step("submit", () -> {
+            practiceFormPage.clickSubmit();});
+
+        step("Verify the result", () -> {
+        practiceFormPage.checkEmptyMobileNumber();});
+
+        Attach.addVideo();
     }
 
     @Test
@@ -141,5 +152,7 @@ public class PracticeFormTests extends TestBase {
 
         step("Fill in the form", () -> {
         practiceFormPage.checkEmptyMobileNumber();});
+
+        Attach.addVideo();
     }
 }
