@@ -37,7 +37,11 @@ public class TestBase {
 
     @AfterEach
     void addAttachment() {
-        Attach.screenshotAs("Last screenshot)");
+        Attach.pageSource();
+        Attach.screenshotAs("Last screenshot");
+        Attach.addVideo();
+        Attach.browserConsoleLogs();
+
     }
 
 }
