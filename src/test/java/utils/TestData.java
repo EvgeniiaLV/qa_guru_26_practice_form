@@ -11,6 +11,7 @@ import java.util.Locale;
 public class TestData {
     private static TestData INSTANCE;
     private final Faker faker = new Faker(new Locale("en-GB"));
+
     private TestData() {
     }
 

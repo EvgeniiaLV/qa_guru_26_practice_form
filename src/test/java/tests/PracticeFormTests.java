@@ -1,11 +1,14 @@
 package tests;
 
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+@Tag("simple")
 public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
     Date birthday = testData.getRandomBirthday();
@@ -81,6 +84,20 @@ public class PracticeFormTests extends TestBase {
                 setFirstName(userName).
                 setLastName(lastName).
                 setGender(gender).
+                setDateOfBirth(year, month, day).
+                clickSubmit();
+
+        practiceFormPage.checkEmptyMobileNumber();
+    }
+
+    @Test
+    @Disabled("The test is out of scope for now...")
+    void negativeRegistrationTestMissingGender() {
+
+        practiceFormPage.openPage().
+                setFirstName(userName).
+                setLastName(lastName).
+                setMobileNumber(mobile).
                 setDateOfBirth(year, month, day).
                 clickSubmit();
 
