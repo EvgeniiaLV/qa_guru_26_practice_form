@@ -1,9 +1,11 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attach;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
@@ -11,7 +13,9 @@ import pages.PracticeFormPage;
 import java.util.ArrayList;
 import java.util.Date;
 
-@Tag("simple")
+import static com.codeborne.selenide.logevents.SelenideLogger.step;
+
+@Tag("practiceForm")
 public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
     Date birthday = testData.getRandomBirthday();
@@ -34,12 +38,17 @@ public class PracticeFormTests extends TestBase {
 
 
     @Test
+    @Owner("Evgeniia Liasheva")
+    @DisplayName("Positive check: all fields are filled with correct data")
     void successfulRegistrationTestFilledAllFields() {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        practiceFormPage.openPage().
-                setFirstName(userName).
+        step("Open the form", () -> {
+                practiceFormPage.openPage();});
+
+        step("Fill in the form", () -> {
+                practiceFormPage.setFirstName(userName).
                 setLastName(lastName).
                 setUserEmail(email).
                 setGender(gender).
@@ -50,9 +59,12 @@ public class PracticeFormTests extends TestBase {
                 uploadPicture(picture).
                 setAddress(address).
                 setState(state).
-                setCity(city).
-                clickSubmit();
+                setCity(city); ;});
 
+        step("submit", () -> {
+            practiceFormPage.clickSubmit();});
+
+        step("Verify the result", () -> {
         practiceFormPage.checkResult("Student Name", userName + " " + lastName).
                 checkResult("Student Email", email).
                 checkResult("Gender", gender).
@@ -62,27 +74,40 @@ public class PracticeFormTests extends TestBase {
                 checkResult("Hobbies", checkHobbies).
                 checkResult("Picture", picture).
                 checkResult("Address", address).
-                checkResult("State and City", state + " " + city);
+                checkResult("State and City", state + " " + city);});
+
+        Attach.addVideo();
     }
 
     @Test
+    @Owner("Evgeniia Liasheva")
+    @DisplayName("Positive check: mandatory fields are filled with correct data")
     void successfulRegistrationTestFilledMandatoryFields() {
 
-        practiceFormPage.openPage().
-                setFirstName(userName).
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        step("Open the form", () -> {
+            practiceFormPage.openPage();});
+
+        step("Fill in the form", () -> {
+            practiceFormPage.setFirstName(userName).
                 setLastName(lastName).
                 setGender(gender).
                 setMobileNumber(mobile).
                 setDateOfBirth(year, month, day).
-                clickSubmit();
+                clickSubmit();});
 
-        practiceFormPage.checkResult("Student Name", userName + " " + lastName).
+
+        step("Verify the result", () -> {
+            practiceFormPage.checkResult("Student Name", userName + " " + lastName).
                 checkResult("Gender", gender).
                 checkResult("Mobile", mobile).
-                checkResult("Date of Birth", day + " " + month + "," + year);
+                checkResult("Date of Birth", day + " " + month + "," + year);});
+        Attach.addVideo();
     }
 
     @Test
+    @DisplayName("Negative check with empty mobile number")
     void negativeRegistrationTestMissingMobileNumber() {
 
         practiceFormPage.openPage().
@@ -96,16 +121,25 @@ public class PracticeFormTests extends TestBase {
     }
 
     @Test
+    @Owner("Evgeniia Liasheva")
     @Disabled("The test is out of scope for now...")
     void negativeRegistrationTestMissingGender() {
 
-        practiceFormPage.openPage().
-                setFirstName(userName).
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
+        step("Open the form", () -> {
+            practiceFormPage.openPage();});
+
+        step("Fill in the form", () -> {
+        practiceFormPage.setFirstName(userName).
                 setLastName(lastName).
                 setMobileNumber(mobile).
-                setDateOfBirth(year, month, day).
-                clickSubmit();
+                setDateOfBirth(year, month, day);});
 
-        practiceFormPage.checkEmptyMobileNumber();
+        step("Submit", () -> {
+                practiceFormPage.clickSubmit();});
+
+        step("Fill in the form", () -> {
+        practiceFormPage.checkEmptyMobileNumber();});
     }
 }
