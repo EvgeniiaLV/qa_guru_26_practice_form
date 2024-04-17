@@ -67,11 +67,11 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setMobileNumber(mobile);
         });
 
-        step("Select birthday: " + birthday, () -> {
+        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
-        step("Fill in subject: " + lastName, () -> {
+        step("Fill in subject: " + subject, () -> {
             practiceFormPage.setSubject(subject);
         });
 
@@ -87,11 +87,11 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setAddress(address);
         });
 
-        step("Choose state: " + lastName, () -> {
+        step("Choose state: " + state, () -> {
             practiceFormPage.setState(state);
         });
 
-        step("Choose city: " + lastName, () -> {
+        step("Choose city: " + city, () -> {
             practiceFormPage.setCity(city);
         });
 
@@ -115,7 +115,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.checkResult("Mobile", mobile);
         });
 
-        step("Verify birthday: " + birthday, () -> {
+        step("Verify birthday: " + year + "/" + month + "/" + day, () -> {
             practiceFormPage.checkResult("Date of Birth", day + " " + month + "," + year);
         });
 
@@ -167,7 +167,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setMobileNumber(mobile);
         });
 
-        step("Select birthday: " + birthday, () -> {
+        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
@@ -187,7 +187,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.checkResult("Mobile", mobile);
         });
 
-        step("Verify birthday: " + birthday, () -> {
+        step("Verify birthday: " + year + "/" + month + "/" + day, () -> {
             practiceFormPage.checkResult("Date of Birth", day + " " + month + "," + year);
         });
     }
@@ -214,7 +214,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setGender(gender);
         });
 
-        step("Select birthday: " + birthday, () -> {
+        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
@@ -250,7 +250,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setMobileNumber(mobile);
         });
 
-        step("Select birthday: " + birthday, () -> {
+        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
