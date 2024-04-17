@@ -109,15 +109,13 @@ public class TestData {
 
     public ArrayList<String> getRandomHobbies() {
 
-        return faker.options().option(new ArrayList<>(),
-                new ArrayList<>(Arrays.asList("Sports", "Reading", "Music")),
+        return faker.options().option(new ArrayList<>(Arrays.asList("Sports", "Reading", "Music")),
                 new ArrayList<>(Arrays.asList("Reading", "Music")),
                 new ArrayList<>(Arrays.asList("Sports", "Music")),
                 new ArrayList<>(Arrays.asList("Sports", "Reading")),
                 new ArrayList<>(Arrays.asList("Music")),
                 new ArrayList<>(Arrays.asList("Reading")),
                 new ArrayList<>(Arrays.asList("Sports")));
-
     }
 
     public String prepareHobbiesForCheck(ArrayList<String> hobbies) {
