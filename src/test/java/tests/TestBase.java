@@ -3,18 +3,12 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import helpers.Attach;
-import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.TestData;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Map;
-
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class TestBase {
     static TestData testData;

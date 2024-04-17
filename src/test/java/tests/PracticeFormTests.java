@@ -2,7 +2,7 @@ package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
-import io.qameta.allure.*;
+import io.qameta.allure.Owner;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +38,6 @@ public class PracticeFormTests extends TestBase {
 
 
     @Test
-    @Tag("practiceForm")
     @Owner("Evgeniia Liasheva")
     @DisplayName("Positive check: all fields are filled with correct data")
     void successfulRegistrationTestFilledAllFields() {
@@ -46,36 +45,40 @@ public class PracticeFormTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open the form", () -> {
-                practiceFormPage.openPage();});
+            practiceFormPage.openPage();
+        });
 
         step("Fill in the form", () -> {
-                practiceFormPage.setFirstName(userName).
-                setLastName(lastName).
-                setUserEmail(email).
-                setGender(gender).
-                setMobileNumber(mobile).
-                setDateOfBirth(year, month, day).
-                setSubject(subject).
-                setHobbies(hobbies).
-                uploadPicture(picture).
-                setAddress(address).
-                setState(state).
-                setCity(city);});
+            practiceFormPage.setFirstName(userName).
+                    setLastName(lastName).
+                    setUserEmail(email).
+                    setGender(gender).
+                    setMobileNumber(mobile).
+                    setDateOfBirth(year, month, day).
+                    setSubject(subject).
+                    setHobbies(hobbies).
+                    uploadPicture(picture).
+                    setAddress(address).
+                    setState(state).
+                    setCity(city);
+        });
 
-        step("submit", () -> {
-            practiceFormPage.clickSubmit();});
+        step("Submit", () -> {
+            practiceFormPage.clickSubmit();
+        });
 
         step("Verify the result", () -> {
-        practiceFormPage.checkResult("Student Name", userName + " " + lastName).
-                checkResult("Student Email", email).
-                checkResult("Gender", gender).
-                checkResult("Mobile", mobile).
-                checkResult("Date of Birth", day + " " + month + "," + year).
-                checkResult("Subjects", subject).
-                checkResult("Hobbies", checkHobbies).
-                checkResult("Picture", picture).
-                checkResult("Address", address).
-                checkResult("State and City", state + " " + city);});
+            practiceFormPage.checkResult("Student Name", userName + " " + lastName).
+                    checkResult("Student Email", email).
+                    checkResult("Gender", gender).
+                    checkResult("Mobile", mobile).
+                    checkResult("Date of Birth", day + " " + month + "," + year).
+                    checkResult("Subjects", subject).
+                    checkResult("Hobbies", checkHobbies).
+                    checkResult("Picture", picture).
+                    checkResult("Address", address).
+                    checkResult("State and City", state + " " + city);
+        });
 
         Attach.addVideo();
     }
@@ -88,22 +91,27 @@ public class PracticeFormTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open the form", () -> {
-            practiceFormPage.openPage();});
+            practiceFormPage.openPage();
+        });
 
         step("Fill in the form", () -> {
             practiceFormPage.setFirstName(userName).
-                setLastName(lastName).
-                setGender(gender).
-                setMobileNumber(mobile).
-                setDateOfBirth(year, month, day).
-                clickSubmit();});
+                    setLastName(lastName).
+                    setGender(gender).
+                    setMobileNumber(mobile).
+                    setDateOfBirth(year, month, day);
+        });
 
+        step("Submit", () -> {
+            practiceFormPage.clickSubmit();
+        });
 
         step("Verify the result", () -> {
             practiceFormPage.checkResult("Student Name", userName + " " + lastName).
-                checkResult("Gender", gender).
-                checkResult("Mobile", mobile).
-                checkResult("Date of Birth", day + " " + month + "," + year);});
+                    checkResult("Gender", gender).
+                    checkResult("Mobile", mobile).
+                    checkResult("Date of Birth", day + " " + month + "," + year);
+        });
         Attach.addVideo();
     }
 
@@ -114,19 +122,23 @@ public class PracticeFormTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open the form", () -> {
-            practiceFormPage.openPage();});
+            practiceFormPage.openPage();
+        });
 
         step("Fill in the form", () -> {
             practiceFormPage.setFirstName(userName).
-                setLastName(lastName).
-                setGender(gender).
-                setDateOfBirth(year, month, day);});
+                    setLastName(lastName).
+                    setGender(gender).
+                    setDateOfBirth(year, month, day);
+        });
 
-        step("submit", () -> {
-            practiceFormPage.clickSubmit();});
+        step("Submit", () -> {
+            practiceFormPage.clickSubmit();
+        });
 
         step("Verify the result", () -> {
-        practiceFormPage.checkEmptyMobileNumber();});
+            practiceFormPage.checkEmptyMobileNumber();
+        });
 
         Attach.addVideo();
     }
@@ -139,19 +151,23 @@ public class PracticeFormTests extends TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Open the form", () -> {
-            practiceFormPage.openPage();});
+            practiceFormPage.openPage();
+        });
 
         step("Fill in the form", () -> {
-        practiceFormPage.setFirstName(userName).
-                setLastName(lastName).
-                setMobileNumber(mobile).
-                setDateOfBirth(year, month, day);});
+            practiceFormPage.setFirstName(userName).
+                    setLastName(lastName).
+                    setMobileNumber(mobile).
+                    setDateOfBirth(year, month, day);
+        });
 
         step("Submit", () -> {
-                practiceFormPage.clickSubmit();});
+            practiceFormPage.clickSubmit();
+        });
 
         step("Fill in the form", () -> {
-        practiceFormPage.checkEmptyMobileNumber();});
+            practiceFormPage.checkEmptyMobileNumber();
+        });
 
         Attach.addVideo();
     }
