@@ -139,4 +139,12 @@ public class PracticeFormPage {
 
         return this;
     }
+
+    public PracticeFormPage checkEmptyGender() {
+        modalWindowSubmit.shouldNot(exist);
+        genderInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        genderInput.shouldBe(empty);
+
+        return this;
+    }
 }
