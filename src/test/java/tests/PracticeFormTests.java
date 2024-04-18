@@ -67,7 +67,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setMobileNumber(mobile);
         });
 
-        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
+        step("Select birthday: " + year + "," + month + " " + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
@@ -115,7 +115,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.checkResult("Mobile", mobile);
         });
 
-        step("Verify birthday: " + year + "/" + month + "/" + day, () -> {
+        step("Verify birthday: " + year + "," + month + " " + day, () -> {
             practiceFormPage.checkResult("Date of Birth", day + " " + month + "," + year);
         });
 
@@ -167,7 +167,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setMobileNumber(mobile);
         });
 
-        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
+        step("Select birthday: " + year + "," + month + " " + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
@@ -187,7 +187,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.checkResult("Mobile", mobile);
         });
 
-        step("Verify birthday: " + year + "/" + month + "/" + day, () -> {
+        step("Verify birthday: " + year + "," + month + " " + day, () -> {
             practiceFormPage.checkResult("Date of Birth", day + " " + month + "," + year);
         });
     }
@@ -214,7 +214,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setGender(gender);
         });
 
-        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
+        step("Select birthday: " + year + "," + month + " " + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
@@ -250,7 +250,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setMobileNumber(mobile);
         });
 
-        step("Select birthday: " + year + "/" + month + "/" + day, () -> {
+        step("Select birthday: " + year + "," + month + " " + day, () -> {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
