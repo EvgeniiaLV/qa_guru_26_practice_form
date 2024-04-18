@@ -47,15 +47,15 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.openPage();
         });
 
-        step("Fill in first name: " + userName, () -> {
+        step("Fill first name in: " + userName, () -> {
             practiceFormPage.setFirstName(userName);
         });
 
-        step("Fill in last name: " + lastName, () -> {
+        step("Fill last name in: " + lastName, () -> {
             practiceFormPage.setLastName(lastName);
         });
 
-        step("Fill in email: " + email, () -> {
+        step("Fill email in: " + email, () -> {
             practiceFormPage.setUserEmail(email);
         });
 
@@ -63,7 +63,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setGender(gender);
         });
 
-        step("Fill in mobile number: " + mobile, () -> {
+        step("Fill mobile number in: " + mobile, () -> {
             practiceFormPage.setMobileNumber(mobile);
         });
 
@@ -71,7 +71,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setDateOfBirth(year, month, day);
         });
 
-        step("Fill in subject: " + subject, () -> {
+        step("Fill subject in: " + subject, () -> {
             practiceFormPage.setSubject(subject);
         });
 
@@ -83,7 +83,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.uploadPicture(picture);
         });
 
-        step("Fill in address: " + address, () -> {
+        step("Fill address in: " + address, () -> {
             practiceFormPage.setAddress(address);
         });
 
@@ -151,11 +151,11 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.openPage();
         });
 
-        step("Fill in first name: " + userName, () -> {
+        step("Fill first name in: " + userName, () -> {
             practiceFormPage.setFirstName(userName);
         });
 
-        step("Fill in last name: " + lastName, () -> {
+        step("Fill last name in: " + lastName, () -> {
             practiceFormPage.setLastName(lastName);
         });
 
@@ -163,7 +163,7 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setGender(gender);
         });
 
-        step("Fill in mobile number: " + mobile, () -> {
+        step("Fill mobile number in: " + mobile, () -> {
             practiceFormPage.setMobileNumber(mobile);
         });
 
@@ -202,11 +202,11 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.openPage();
         });
 
-        step("Fill in first name: " + userName, () -> {
+        step("Fill first name in: " + userName, () -> {
             practiceFormPage.setFirstName(userName);
         });
 
-        step("Fill in last name: " + lastName, () -> {
+        step("Fill last name in: " + lastName, () -> {
             practiceFormPage.setLastName(lastName);
         });
 
@@ -238,15 +238,15 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.openPage();
         });
 
-        step("Fill in first name: " + userName, () -> {
+        step("Fill first name in: " + userName, () -> {
             practiceFormPage.setFirstName(userName);
         });
 
-        step("Fill in last name: " + lastName, () -> {
+        step("Fill last name in: " + lastName, () -> {
             practiceFormPage.setLastName(lastName);
         });
 
-        step("Fill in mobile number: " + mobile, () -> {
+        step("Fill mobile number in: " + mobile, () -> {
             practiceFormPage.setMobileNumber(mobile);
         });
 
