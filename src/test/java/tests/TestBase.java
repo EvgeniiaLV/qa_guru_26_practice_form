@@ -15,7 +15,6 @@ public class TestBase {
 
     @BeforeAll
     static void setUpConfig() {
-        //Configuration.browser = System.getProperty("BROWSER", "chrome");
         Configuration.browser = System.getProperty("BROWSER");
         Configuration.browserVersion = System.getProperty("BROWSER_VERSION", "123.0");
         Configuration.browserSize = System.getProperty("BROWSER_SIZE","1920x1080");
