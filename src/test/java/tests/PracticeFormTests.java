@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Owner;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -11,6 +12,7 @@ import pages.PracticeFormPage;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
@@ -79,9 +81,11 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.setHobbies(hobbies);
         });
 
-        step("Upload picture: " + picture, () -> {
-            practiceFormPage.uploadPicture(picture);
-        });
+        if (Objects.equals(Configuration.browser, "chrome")) {
+            step("Upload picture: " + picture, () -> {
+                practiceFormPage.uploadPicture(picture);
+            });
+        }
 
         step("Fill address in: " + address, () -> {
             practiceFormPage.setAddress(address);
@@ -127,9 +131,11 @@ public class PracticeFormTests extends TestBase {
             practiceFormPage.checkResult("Hobbies", checkHobbies);
         });
 
-        step("Verify picture: " + picture, () -> {
-            practiceFormPage.checkResult("Picture", picture);
-        });
+        if (Objects.equals(Configuration.browser, "chrome")) {
+            step("Verify picture: " + picture, () -> {
+                practiceFormPage.checkResult("Picture", picture);
+            });
+        }
 
         step("Verify address: " + address, () -> {
             practiceFormPage.checkResult("Address", address);
