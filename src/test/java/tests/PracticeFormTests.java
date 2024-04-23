@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static io.qameta.allure.Allure.step;
 
 @Tag("practiceForm")
 public class PracticeFormTests extends TestBase {
@@ -40,7 +40,7 @@ public class PracticeFormTests extends TestBase {
 
     @Test
     @Owner("Evgeniia Liasheva")
-    @DisplayName("Positive check: all fields are filled with correct data")
+    @DisplayName("Positive check: all fields are filled in with correct data")
     void successfulRegistrationTestFilledAllFields() {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -148,7 +148,7 @@ public class PracticeFormTests extends TestBase {
 
     @Test
     @Owner("Evgeniia Liasheva")
-    @DisplayName("Positive check: mandatory fields are filled with correct data")
+    @DisplayName("Positive check: mandatory fields are filled in with correct data")
     void successfulRegistrationTestFilledMandatoryFields() {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
